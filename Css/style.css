@@ -11,7 +11,7 @@ a{
 
 @font-face{
 	font-family: 'Blueberry';
-	src: url("../fonts/Blueberry.ttf") format('truetype')
+	src: url("../fonts/Blueberry.ttf")
 }
 
 
@@ -33,6 +33,11 @@ h1 a{
     text-decoration: none;
 }
 
+h2 {
+    color: #a81919;
+    font-family: 'Blueberry';
+}
+
 
 .navbar {
     position: absolute;
@@ -45,6 +50,7 @@ h1 a{
     box-sizing: border-box;
 }
 .logo {
+    /* position: fixed; */
     display: flex;
     align-items: center;
     width: 20%;
@@ -83,7 +89,24 @@ h1 a{
     background-color: black;
     opacity: 50%;
 }
+.nav-links .menu-profil {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: pink;
+    /* backdrop-filter: blur(8px); */
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -100%;
+    /* transition: all 0.5s ease; */
 
+}
+.nav-links .profil-menu ul{
+    display: none;
+}
 @media screen and ( max-width: 900px ){
     header {
         height: 10vh;
@@ -126,7 +149,7 @@ h1 a{
         position: absolute;
         background-color: pink;
         /* backdrop-filter: blur(8px); */
-        width: 50%;
+        width: 70%;
         height: 100vh;
         display: flex;
         justify-content: center;
