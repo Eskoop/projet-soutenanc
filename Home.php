@@ -2,7 +2,12 @@
 // Connexion à la BDD
 require_once 'inc/init.inc.php';
 
-$requete
+if (isset($_GET['action']) && $_GET['action'] == 'deconnexion'){
+  session_destroy();
+  $contenu .= '<div class="alert alert-success">Vous avez bien été déconnecté<a href="connexion.php">Se reconnecter</a></div>';
+
+}
+
 
 
 
@@ -25,18 +30,14 @@ $requete
 </head>
 
 <body>
-  <header class="">
-    <!-- <div class="logo">
-      <img src="img/Logo_finale_Detourer3.png" alt="" class="">
-      <h1 class=""><a href="#">TENGOKU</a></h1>
-    </div> -->
-    <!-- Nav -->
-    <?php
-    require_once 'inc/nav.php'
-    ?>
-  </header>
+
+  <?php
+  require_once 'inc/nav.php'
+  ?>
+<?php echo $contenu; ?>
+
   <main>
-    <div id="carouselExampleIndicators carrousel" class="carousel slide col-8 mx-auto my-3 ">
+    <div id="carouselExampleIndicators" data-ride="carousel" class="carousel slide col-8 mx-auto my-3 ">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -44,10 +45,10 @@ $requete
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="img/Sans titre.jpg" class="d-block w-100" alt="...">
+          <img src="img/sans_titre_6.png" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item ">
-          <img src="img/sans_titre_6.png" class="d-block w-100" alt="...">
+          <img src="img/Sans titre.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
           <img src="img/Type-de-manga_1024x.webp" class="d-block w-100" alt="...">
@@ -62,35 +63,29 @@ $requete
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    <div class="col-10 mx-auto">
-      <div class="card text-center">
-        <div class="card-header">
-          <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="true" href="#">Active</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
-          </ul>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
+
+
 
   </main>
   <footer>
 
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  
   <script src="Css/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+
+
 </body>
+
+<!-- <script>
+  // Code d'initialisation du carrousel
+  var myCarousel = document.querySelector('#carouselExampleIndicators');
+  var carousel = new bootstrap.Carousel(myCarousel, {
+    interval: 2000,  // Spécifiez l'intervalle de temps entre chaque diapositive
+    wrap: true       // Définit si le carrousel boucle en continu ou s'arrête à la dernière diapositive
+  });
+</script> -->
 
 </html>

@@ -9,7 +9,7 @@ function debug($mavar){
 }
 
 function estConnecte(){
-    if(isset($_SESSION['users'])){
+    if(isset($_SESSION['client'])){
         // si je récupère un indice 'users' dans la superGlobale $_SESSION, cela signifie qu'un utilisateur est connecté
         return true;
     }else{// sinon personne n'est connecté
