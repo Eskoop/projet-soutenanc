@@ -17,4 +17,16 @@ function estConnecte(){
     }
 }
 
+function estAdmin(){
+    if(estConnecte() && $_SESSION['client']['statut'] == 1){
+        // je vérifie que l'utilisateur est connecté et que son statut correspond à 1 dans la BDD
+        return true;
+    }else{
+        return false; // sinon, c'est un utilisateur lambda ou la personne n'est pas connecté.
+    }
+}
+
+if(!isset($_SESSION['panier'])){
+    $_SESSION['panier'] = array();
+}
 ?>

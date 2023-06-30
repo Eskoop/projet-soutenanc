@@ -25,7 +25,7 @@ $requete = $pdoManga ->query('SELECT * FROM blog ORDER BY id_article DESC')
     <?php while($article = $requete -> fetch(PDO::FETCH_ASSOC)){
           echo  '<div class="col-12 col-md-4">
                 <div class="card p-1 my-3">
-                    <img src="' . $article['photo-1'].'" class="card-img-top" alt="...">
+                    <img src="' . $article['photo_1'].'" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><a href="articleActu.php?id_article=' . $article['id_article'] . '">' . $article['titre'] . '</a></h5>
                         <p class="card-text">' .html_entity_decode(substr($article['contenu'],0 , 100)) . '</p>'

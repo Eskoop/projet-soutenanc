@@ -34,7 +34,7 @@ if (!empty($_POST)) {
             $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
             //grâce à la focntion prédéfinie password_hash, je dis à mon code de hascher le mdp et lui précise ensuite selon quel le méthode ici grâce à la, constante PASSWORD_DEFAULT.Vous pouvez aussi définir vous même votre algorithme à la place d'utiliser la constante PASSWORD_DEFAULT
 
-            $insertion = $pdoManga->prepare('INSERT INTO client(prenom, nom, genre, pseudo, email, mdp, role) VALUES (:prenom, :nom, :genre, :pseudo, :email, :mdp, 0)');
+            $insertion = $pdoManga->prepare('INSERT INTO client(prenom, nom, genre, pseudo, email, mdp, statut) VALUES (:prenom, :nom, :genre, :pseudo, :email, :mdp, 0)');
 
             // Je prépare ma requete avec mes marqueurs vides qui vont correspondre a ce que mon utilisateur va mettre dans le formulaire.
             // Le Seul champ différent est le statut, qui va être automatiquement 0(utilisateur lambda)

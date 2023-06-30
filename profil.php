@@ -16,7 +16,11 @@ if (!empty($_POST)) {
         ':pays' => $_POST['pays'],
         ':tel' => $_POST['tel'],
         ':genre' => $_POST['genre'],
+        
     ));
+
+    
+
 }
 
 
@@ -138,7 +142,6 @@ if (!empty($_POST)) {
                     <option value="m" <?php if ($_SESSION['client']['genre'] === 'm') echo 'selected'; ?>>Homme</option>
                 </select>
             </div>
-
             <input type="submit" value="Modification du profil" class="btn btn-outline-primary">
 
         </form>

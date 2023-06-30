@@ -8,7 +8,7 @@ if (isset($_GET['id_produit'])) {
     $article->execute(array(
         ':id_produit' => $_GET['id_produit'],
     ));
-    //3- Si la personne arrive sur la page avec un id_article dans l'url  qui n'existe pas // redirection vers la page articles.php
+    //3- Si la personne arrive sur la page avec un id_article dans l'url  qui n'existe pas // redirection vers la page articles.php 
     if ($article->rowCount() == 0) {
         header('location:Home.php');
         exit();
@@ -33,7 +33,7 @@ if (isset($_GET['id_produit'])) {
     $resultatCategorie = $categorie->fetch(PDO::FETCH_ASSOC);
 
     // Accès au type de catégorie récupéré
-    $typeCategorie = $resultatCategorie['type'];
+    // $typeCategorie = $resultatCategorie['type'];
 
     // ...
 }
@@ -46,6 +46,20 @@ if (isset($_GET['id_produit'])) {
 // WHERE produit.id_produit = 5");
 
 // $result = $categorie ->fetch(PDO::FETCH_ASSOC)
+
+// if (isset($_POST['ajouter_anier'])) {
+//     if (isset($_SESSION['panier'])) {
+
+//     } else {
+//         $session_array = array(
+//             "id_produit" => $_GET['id_produit'],
+//             "titre" => $_POST['titre'],
+//             "prix" => $_POST['prix'],
+//             "quantity" => $_POST['quantity']
+//         );
+//         $_SESSION['panier'][] = $session_array;
+//     }
+// }
 
 ?>
 
@@ -62,18 +76,20 @@ if (isset($_GET['id_produit'])) {
 </head>
 
 <body>
-    <header>
         <?php require_once 'inc/nav.php' ?>
-    </header>
+        <?php
+        // echo '<pre>';
+        //  var_dump($ficheArticle);
+        // echo '</pre>'; ?>
     <main>
         <h3><?php echo $ficheArticle['titre']; ?></h3>
         <div class="d-flex ">
             <div class="d-flex col-5 p-0 ">
                 <figure class="d-flex flex-column w-75">
-                    <img src="<?php echo $ficheArticle['photo-1']; ?>" alt="<?php echo $ficheArticle['alt-photo-1']; ?>" class="w-25  miniImage">
-                    <img src="<?php echo $ficheArticle['photo-2']; ?>" alt="<?php echo $ficheArticle['alt-photo-2']; ?>" class="w-25 miniImage my-2">
-                    <img src="<?php echo $ficheArticle['photo-3']; ?>" alt="<?php echo $ficheArticle['alt-photo-3']; ?>" class="w-25 miniImage">
-                    <img src="<?php echo $ficheArticle['photo-4']; ?>" alt="<?php echo $ficheArticle['alt-photo-4']; ?>" class="w-25 miniImage">
+                    <img src="<?php echo $ficheArticle['photo_1']; ?>" alt="<?php echo $ficheArticle['alt_photo_1']; ?>" class="w-25  miniImage">
+                    <img src="<?php echo $ficheArticle['photo_2']; ?>" alt="<?php echo $ficheArticle['alt_photo_2']; ?>" class="w-25 miniImage my-2">
+                    <img src="<?php echo $ficheArticle['photo_3']; ?>" alt="<?php echo $ficheArticle['alt_photo_3']; ?>" class="w-25 miniImage">
+                    <img src="<?php echo $ficheArticle['photo_4']; ?>" alt="<?php echo $ficheArticle['alt_photo_4']; ?>" class="w-25 miniImage">
                 </figure>
 
                 <figure class="grandImage">
@@ -89,8 +105,11 @@ if (isset($_GET['id_produit'])) {
             </div>
             <div class="col-2 flex-column ">
                 <p class="m-auto">Prix</p>
-                <p><?php echo $ficheArticle['prix'] . ' €'?></p>
-                <button type="button" class="btn btn-success" href="panier.php">Success</button>
+                <p><?php echo $ficheArticle['prix'] . ' €' ?></p>
+                <form action="panier.php?page=panier" method="post">
+	             <input type="number" name="quantité" value="1" min="1" max="<?=$ficheArticle['stock']?>" placeholder="Quantité" required>
+	             <input type="hidden" name="produit_id" value="<?=$ficheArticle['id_produit']?>">            <input type="submit" value="Ajouter au panier">
+	         </form>
             </div>
         </div>
         <div>
@@ -99,7 +118,7 @@ if (isset($_GET['id_produit'])) {
                 <p>Auteur : <?php echo $ficheArticle['auteur'] ?></p>
                 <!-- <p> Editeur : <?php echo $ficheArticle['editeur'] ?></p> -->
                 <!-- <p> Date de parution : <?php echo $ficheArticle['date_de_parution'] ?></p> -->
-                <p>Collection : <?php echo $typeCategorie ?></p>
+                <p>Collection : <?php echo $ficheArticle['genre'] ?></p>
             </div>
         </div>
     </main>

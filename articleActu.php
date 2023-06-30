@@ -48,7 +48,7 @@ if (isset($_GET['id_article'])) {
 
     <main class="container">
         <section class="row my-5">
-            <img src="<?php echo $ficheActu['photo-1'] ?>" class="img-fluid">
+            <img src="<?php echo $ficheActu['photo_1'] ?>" class="img-fluid">
             <p> <?php echo html_entity_decode($ficheActu['contenu']); ?></p>
            
 
