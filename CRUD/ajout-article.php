@@ -1,20 +1,23 @@
 <?php
+require_once '../inc/init.inc.php';
+
 if ($_POST) {
     if (
         isset($_POST['titre']) && !empty($_POST['titre'])
         && isset($_POST['contenu']) && !empty($_POST['contenu'])
         && isset($_POST['photo_1']) && !empty($_POST['photo_1'])
     ) {
-        require_once '../inc/init.inc.php';
         $titre = strip_tags($_POST['titre']);
         $contenu = strip_tags($_POST['contenu']);
         $photo_1 = strip_tags($_POST['photo_1']);
 
-        $sql = 'INSERT INTO blog (titre, photo_1, contenu) VALUES (:titre, :photo_1, :contenu)';
+        $sql = 'INSERT INTO blog (titre, photo_1, contenu, id_client) VALUES (:titre, :photo_1, :contenu, :id_client)';
         $query = $pdoManga->prepare($sql);
         $query->bindValue(':titre', $titre, PDO::PARAM_STR);
         $query->bindValue(':photo_1', $photo_1, PDO::PARAM_STR);
         $query->bindValue(':contenu', $contenu, PDO::PARAM_STR);
+        $query->bindValue(':id_client', $_SESSION['client']['id_client'], PDO::PARAM_INT);
+
         $query->execute();
 
         $_SESSION['message'] = "Article ajouté";
@@ -37,6 +40,7 @@ if ($_POST) {
 </head>
 
 <body>
+
     <main class="container">
         <div class="row">
             <?php
@@ -49,7 +53,7 @@ if ($_POST) {
             ?>
             <section class="col-12">
                 <h1>Ajouter un article</h1>
-                <form method="post">
+                <form method="post" action="">
 
                     <div class="form-group">
                         <label for="titre">Titre</label>

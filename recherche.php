@@ -62,10 +62,10 @@ if(isset($_GET['recherche']) && !empty($_GET['recherche'])){
                 echo '<p>La recherche est vide</p>';
             }else{
             if ($recherche->rowCount() > 0) {
-                foreach ($recherche as $article ) {
+                foreach ($rechercheA as $article ) {
             ?>
                     <div>
-                        <p><a href="articleActu.php?id_article=<?php echo $article['id_article'] ?>"><?php echo $produit['titre'] ?></a></p>
+                        <p><a href="articleActu.php?id_article=<?php echo $article['id_article'] ?>"><?php echo $article['titre'] ?></a></p>
 
                     </div>
 
