@@ -58,26 +58,19 @@ if (isset($_POST['update']) && isset($_SESSION['panier'])) {
     exit;
 }
 
-
-/* Diriger l'utilisateur vers la page de commande s'il clique sur le bouton Passer la commande, le panier ne doit pas être vide.*/
-// if (isset($_POST['passerCommande']) && isset($_SESSION['panier']) && !empty($_SESSION['panier'])) {
-//     header('Location: panier.php');
-//     exit;
-// }
-
 /* Vérification de la variable de session pour les produits en panier*/
 $produits_in_panier = isset($_SESSION['panier']) ? $_SESSION['panier'] : array();
 $produits = array();
 $subtotal = 0.00;
 // // S'il y a des produits dans le panier   
 if ($produits_in_panier) {
-//     /* Il y a des produits dans le panier, nous devons donc sélectionner ces produits dans la base de données.*/
-//     /* Mettre les produits du panier dans un tableau de chaîne de caractères avec point d'interrogation, nous avons besoin que l'instruction SQL inclue  ( ?,?, ?,...etc).*/
+    //     /* Il y a des produits dans le panier, nous devons donc sélectionner ces produits dans la base de données.*/
+    //     /* Mettre les produits du panier dans un tableau de chaîne de caractères avec point d'interrogation, nous avons besoin que l'instruction SQL inclue  ( ?,?, ?,...etc).*/
     $array_to_question_marks = implode(',', array_fill(0, count($produits_in_panier), '?'));
     $stmt = $pdoManga->prepare('SELECT * FROM produit WHERE id_produit IN (' . $array_to_question_marks . ')');
-//     /* Nous avons uniquement besoin des clés du tableau, pas des valeurs, les clés sont les identifiants des produits. */
+    //     /* Nous avons uniquement besoin des clés du tableau, pas des valeurs, les clés sont les identifiants des produits. */
     $stmt->execute(array_keys($produits_in_panier));
-//     /* Récupérer les produits de la base de données et retourner le résultat sous la forme d'un tableau.*/
+    //     /* Récupérer les produits de la base de données et retourner le résultat sous la forme d'un tableau.*/
     $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // Calculez le total partiel   
     foreach ($produits as $produit) {
@@ -122,7 +115,6 @@ if (isset($_POST['add-to-cart'])) {
     }
 }
 
-// Le reste de votre code pour afficher le panier et les produits...
 ?>
 
 
@@ -135,64 +127,84 @@ if (isset($_POST['add-to-cart'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panier</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="asset/Css/style.css">
 </head>
 <?php require_once 'inc/nav.php'; ?>
+
 <body>
-
-    <div class="panier content-wrapper">
-        <h1>Panier d'achat</h1>
-        <form action="#" method="POST">
-            <table>
-                <thead>
-                    <tr>
-                        <td colspan="2">produit</td>
-                        <td>prix</td>
-                        <td>quantité</td>
-                        <td>Total</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (empty($produits)) : ?>
-                        <tr>
-                            <td colspan="5" style="text-align:center;">Vous n'avez aucun produit ajouté dans votre panier</td>
+    <main class="h-100">
+        <div class="panier content-wrapper">
+            <h1>Panier d'achat</h1>
+            <form action="#" method="POST" class="m-auto">
+                <table class="bg-light border m-auto mw-100 w-75">
+                    <thead>
+                        <tr class="border">
+                            <td class="border fw-bold text-center">Produit</td>
+                            <td class="border fw-bold text-center">Descriptif</td>
+                            <td class="border fw-bold text-center">Prix</td>
+                            <td class="border fw-bold text-center">Quantité</td>
+                            <td class="border fw-bold text-center">Total</td>
                         </tr>
-                    <?php else : ?>
-                        <?php foreach ($produits as $produit): ?>
+                    </thead>
+                    <tbody>
+                        <?php if (empty($produits)) : ?>
                             <tr>
-                                <td class="img">
-                                    <a href="articleProduit.php?id_produit=<?= $produit['id_produit'] ?>">
-                                        <img src="imgs/<?= $produit['photo_1'] ?>" width="50" height="50" alt="<?= $produit['titre'] ?>">
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="articleProduit.php?id_produit=<?= $produit['id_produit'] ?>"><?= $produit['titre'] ?></a>
-                                    <br>
-                                    <a href="panier.php?page=panier&remove=<?= $produit['id_produit'] ?>" class="remove">
-                                        <i class="fas fa-trash">&nbsp;</i>Supprimer
-                                    </a>
-                                </td>
-                                <td class="prix"><?= $produit['prix'] ?> €</td>
-                                <td class="quantité">
-                                    <input type="number" name="quantité-<?= $produit['id_produit'] ?>" value="<?= $produits_in_panier[$produit['id_produit']] ?>" min="1" max="<?= $produit['stock'] ?>" placeholder="quantité" required>
-                                </td>
-                                <td class="prix"><?= intval($produit['prix']) * intval($produits_in_panier[$produit['id_produit']]) ?> €</td>
-
+                                <td colspan="5" style="text-align:center;">Vous n'avez aucun produit ajouté dans votre panier</td>
                             </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-            <div class="subtotal">
-                <span class="text">Subtotal</span>
-                <span class="prix">&dollar;<?= $subtotal ?></span>
-            </div>
-            <div class="buttons">
-                <input type="submit" value="Mettre à jour" name="update">
-                <input type="submit" value="Passer la commande" name="passerCommande">
-            </div>
-        </form>
-    </div>
+                        <?php else : ?>
+                            <?php foreach ($produits as $produit) : ?>
+                                <tr>
+                                    <td class="img col-4 border text-center">
+                                        <a href="articleProduit.php?id_produit=<?= $produit['id_produit'] ?>">
+                                            <img src="<?= $produit['photo_1'] ?>" width="120" height="120" alt="<?= $produit['titre'] ?>">
+                                        </a>
+                                        <a href="articleProduit.php?id_produit=<?= $produit['id_produit'] ?>"><?= $produit['titre'] ?></a>
+                                    </td>
+                                    <td class="col-3 text-center">
+                                        <a href="panier.php?page=panier&remove=<?= $produit['id_produit'] ?>" class="remove">
+                                            <i class="fas fa-trash">&nbsp;</i>Supprimer
+                                        </a>
+                                    </td>
+                                    <td class="col-1 m-auto border text-center"><?= $produit['prix'] ?> €</td>
+                                    <td class="quantité col-2 ">
+                                        <input type="number" name="quantité-<?= $produit['id_produit'] ?>" value="<?= $produits_in_panier[$produit['id_produit']] ?>" min="1" max="<?= $produit['stock'] ?>" class="form-control w-50 ms-5    " placeholder="Quantité" required>
+                                    </td>
+                                    <td class="prix col-1 border text-center"><?= intval($produit['prix']) * intval($produits_in_panier[$produit['id_produit']]) ?> €</td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+                <table class="bg-light border m-auto mw-100 w-75">
+                    <thead>
+                        <tr>
+                            <td class="border fw-bold text-center">Prix total HT</td>
+                            <td class="border fw-bold text-center">TVA</td>
+                            <td class="border fw-bold text-center">Prix Total</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border text-center"><?= $subtotal/1.2 ?> €</td>
+                            <td class="border text-center">20%</td>
+                            <td class="border text-center"><?= $subtotal ?> €</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="buttons p-3">
+                    <input type="submit" value="Mettre à jour" name="update" class="btn btn-outline-primary">
+                    <input type="submit" value="Passer la commande" name="passerCommande" class="btn btn-outline-success">
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
+<!-- FOOTER -->
+
+<?php require_once 'inc/footer.php' ?>
+
+<script src="asset/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 
 </html>

@@ -2,7 +2,7 @@
 
 
 
-if ($_POST) {
+if($_POST) {
     if (
         isset($_POST['titre']) && !empty($_POST['titre'])
         && isset($_POST['genre']) && !empty($_POST['genre'])
@@ -11,7 +11,10 @@ if ($_POST) {
         && isset($_POST['prix']) && !empty($_POST['prix'])
         && isset($_POST['stock']) && !empty($_POST['stock'])
         && isset($_POST['photo_1']) && !empty($_POST['photo_1'])
-        // && isset($_POST['alt-photo-1']) && !empty($_POST['alt-photo-1'])
+        && isset($_POST['alt_photo_1']) && !empty($_POST['alt_photo_1'])
+        && isset($_POST['photo_2']) && !empty($_POST['photo_2'])
+        && isset($_POST['alt_photo_2']) && !empty($_POST['alt_photo_2'])
+        && isset($_POST['id_categorie']) && !empty($_POST['id_categorie'])
         // && isset($_POST['photo-2']) && !empty($_POST['photo-2'])
         // && isset($_POST['alt-photo-2']) && !empty($_POST['alt-photo-2'])
 
@@ -24,14 +27,16 @@ if ($_POST) {
         $auteur = strip_tags($_POST['auteur']);
         $prix = strip_tags($_POST['prix']);
         $photo_1 = strip_tags($_POST['photo_1']);
-        // $altPhoto1 = strip_tags($_POST['alt-photo-1']);
-        // $photo2 = strip_tags($_POST['photo-2']);
-        // $altPhoto2 = strip_tags($_POST['alt-photo-2']);
+        $alt_photo_1 = strip_tags($_POST['alt_photo_1']);
+        $photo_2 = strip_tags($_POST['photo_2']);
+        $alt_photo_2 = strip_tags($_POST['alt_photo_2']);
+        $id_categorie = strip_tags($_POST['id_categorie']);
         $stock = strip_tags($_POST['stock']);
 
 
 
-        $sql = ' INSERT INTO produit (genre, titre, description,  auteur, prix, photo_1, stock) VALUES (:genre, :titre, :description, :auteur, :prix,:photo_1, :stock)';
+       $sql = 'INSERT INTO produit (genre, titre, description, auteur, prix, photo_1, alt_photo_1, photo_2, alt_photo_2, stock, id_categorie) VALUES (:genre, :titre, :description, :auteur, :prix, :photo_1, :alt_photo_1, :photo_2, :alt_photo_2, :stock, :id_categorie)';
+
 
         $query = $pdoManga->prepare($sql);
 
@@ -40,10 +45,12 @@ if ($_POST) {
         $query->bindValue(':description', $description, PDO::PARAM_STR);
         $query->bindValue(':auteur', $auteur, PDO::PARAM_STR);
         $query->bindValue(':prix', $prix, PDO::PARAM_STR);
+        $query->bindValue(':id_categorie', $id_categorie, PDO::PARAM_STR);
         $query->bindValue(':photo_1', $photo_1, PDO::PARAM_STR);
-        // $query->bindValue(':alt-photo-1', $altPhoto1, PDO::PARAM_STR);
-        // $query->bindValue(':photo-2', $photo2, PDO::PARAM_STR);
-        // $query->bindValue(':alt-photo-2', $altPhoto2, PDO::PARAM_STR);
+        $query->bindValue(':alt_photo_1', $alt_photo_1, PDO::PARAM_STR);
+        $query->bindValue(':photo_2', $photo_2, PDO::PARAM_STR);
+        $query->bindValue(':alt_photo_2', $alt_photo_2, PDO::PARAM_STR);
+        
         $query->bindValue(':stock', $stock, PDO::PARAM_STR);
 
         $query->execute();
@@ -113,24 +120,31 @@ if ($_POST) {
                         <label for="photo_1">Photo N°1</label>
                         <input type="text" id="photo_1" name="photo_1" class="form-control">
                     </div>
-                    <!-- 
+
                     <div class="form-group">
-                        <label for="altPhoto1">Alt Photo n°1</label>
-                        <input type="text" id="altPhoto1" name="altPhoto1" class="form-control">
+                        <label for="alt_photo_1">Alt Photo n°1</label>
+                        <input type="text" id="alt_photo_1" name="alt_photo_1" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="photo2">Photo n°2</label>
-                        <input type="text" id="photo2" name="photo2" class="form-control">
+                        <label for="photo_2">Photo n°2</label>
+                        <input type="text" id="photo_2" name="photo_2" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="altPhoto2">Alt Photo n°2</label>
-                        <input type="text" id="altPhoto2" name="altPhoto2" class="form-control">
-                    </div> -->
+                        <label for="alt_photo_2">Alt Photo n°2</label>
+                        <input type="text" id="alt_photo_2" name="alt_photo_2" class="form-control">
+                    </div>
                     <div class="form-group">
                         <label for="stock">Stock</label>
                         <input type="number" id="stock" name="stock" class="form-control">
                     </div>
-
+                    <select id="id_categorie" name="id_categorie" class="form-control">
+                        <option value="1">Shonen</option>
+                        <option value="2">Shojo</option>
+                        <option value="3">Seinen</option>
+                        <option value="4">Josei</option>
+                        <option value="5">Figurine</option>
+                        <option value="6">Tee-shirt</option>
+                    </select>
 
 
 

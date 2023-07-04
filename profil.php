@@ -16,11 +16,8 @@ if (!empty($_POST)) {
         ':pays' => $_POST['pays'],
         ':tel' => $_POST['tel'],
         ':genre' => $_POST['genre'],
-        
+
     ));
-
-    
-
 }
 
 
@@ -42,10 +39,9 @@ if (!empty($_POST)) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <!-- Link CSS -->
-    <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="asset/Css/style.css">
     <style>
-        
-        .hide{
+        .hide {
             display: none;
         }
     </style>
@@ -60,7 +56,7 @@ if (!empty($_POST)) {
 
     <main>
 
-        <div class="card-header">
+        <div class="card-header w-75 m-auto" >
             <h5 class="card-title">
                 <?php
 
@@ -68,7 +64,7 @@ if (!empty($_POST)) {
                 //     echo 'Madame'; 
                 // }else{echo'Monsieur';
                 // }   
-                echo 'Bienvenue sur votre profil ' . $_SESSION['client']['pseudo'];
+                echo '<h3 class="fw-bold">Bienvenue sur votre profil ' . $_SESSION['client']['pseudo'] . '</h3>';
                 ?>
 
             </h5>
@@ -83,9 +79,10 @@ if (!empty($_POST)) {
 
             </div>
 
-            <button type="buton" class="btn btn-outline-primary modif-bouton">Modifier</button>
-            <div class="card-footer text-muted">
-                <a href="Home.php?action=deconnexion" class="btn btn-secondary">Me déconnecter</a>
+
+            <div class="card-footer text-muted pb-3">
+                <button type="buton" class="btn btn-outline-info modif-bouton">Modifier</button>
+                <a href="Home.php?action=deconnexion" class="btn btn-dark">Me déconnecter</a>
             </div>
 
         </div>
@@ -127,7 +124,7 @@ if (!empty($_POST)) {
 
             <div class="mb-3">
                 <label for="pays">Pays</label>
-                <input type="text" name="pays" id="pays" class="form-control" value="<?php echo $_SESSION['client']['pays'] ?>">
+                <input type="countryfield" name="pays" id="pays" class="form-control" value="<?php echo $_SESSION['client']['pays'] ?>">
             </div>
 
             <div class="mb-3">
@@ -147,7 +144,9 @@ if (!empty($_POST)) {
         </form>
     </main>
 
+    <!-- FOOTER -->
 
+    <?php require_once 'inc/footer.php' ?>
 
     <script>
         let btn = document.querySelector('.modif-bouton');
@@ -161,6 +160,7 @@ if (!empty($_POST)) {
         }
         AfficherCacher(btn, rect, 'hide');
     </script>
+    <script src="asset/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 </body>

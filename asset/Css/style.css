@@ -1,0 +1,457 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+@font-face{
+	font-family: 'Blueberry';
+	src: url("../fonts/Blueberry.ttf")
+}
+
+
+body{
+    /* background-color: #F9FBCF; */
+    background-color: #f594a9;
+    /* max-height: 100%; */
+    min-height: 100vh;
+    
+}
+
+header{
+    background-color: #FFFFFF;
+    height: 150px;
+    width: 100%;
+    border-bottom: solid 3px #a81919;
+}
+h1{
+    font-family: 'Blueberry';
+}
+h1 a{
+    color: #a81919;
+    font-family: 'Blueberry';
+    text-decoration: none;
+}
+
+h2 {
+    color: #a81919;
+    font-family: 'Blueberry';
+}
+
+
+.navbar {
+    position: absolute;
+    z-index: 9999;
+    padding: 30px;  
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    width: 100%;
+    box-sizing: border-box;
+}
+.logo {
+    /* position: fixed; */
+    display: flex;
+    align-items: center;
+    width: 20%;
+}
+.logo img {
+    width: 40%;
+}
+.logo-nav{
+    display: none;
+}
+.navbar a {
+    color: #a81919;
+}
+
+.navbar .nav-links ul {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-links ul li {
+    margin: 0 9px;
+}
+.navbar .menu-hamburger {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    width: 35px;
+}
+
+.panier{
+    color: #a81919;
+    /* top: 100px; */
+}
+.li-panier{
+    position: relative;
+
+}
+.n-panier{
+    border-radius: 75%;
+    position: absolute;
+    bottom: 3px;
+    right: 20px;
+    color: #000;
+    font-weight: bold;
+}
+
+
+
+/* MAIN */
+
+main{
+    background-color: #F9FBCF;
+    /* max-height: 100%; */
+    /* position: relative; */
+    flex: 1;
+    
+
+    
+
+}
+.carousel-control-prev:hover, .carousel-control-next:hover{
+    background-color: black;
+    opacity: 50%;
+}
+/* FOOTER */
+
+footer{
+    border-top: solid 3px #a81919;
+    /* position:absolute; */
+    /* bottom: -120px; */
+    /* margin: 0; */
+    width: 100%;
+}
+.foot-tengoku{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.foot-tengoku h3{
+    font-weight: bold;
+}
+.foot-tengoku a {
+    color: #a81919;
+    
+}
+.copyright{
+    padding-top: 5px;
+    color: #a81919;
+    font-weight: bold;
+}
+footer{
+  
+}
+
+@media screen and (min-width: 577px) and (max-width: 768px){
+    header {
+        width: 100%;
+        max-height: 100px;
+        position: relative;
+    }
+
+     /* NAV */
+    .navbar{
+        padding: 0;
+    }
+    
+    
+    .navbar .logo {
+        padding: 30px 0 0 10px;
+    }
+
+    .navbar .logo img {
+        /* display: none; */
+    }
+    .navbar .logo h1 {
+        padding-left: 15px;
+    }
+
+    .navbar .menu-hamburger {
+        display: block;
+        /* right: 20px; */
+    }
+
+    .logo-nav{
+        display: block;
+    }
+
+    .nav-links {
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: pink;
+        width: 70%;
+        height: 110vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -100%;
+        transition: all 0.5s ease;
+
+    }
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: right; */
+    }
+    .navbar .nav-links ul li {
+        margin: 20px 0;
+        font-size: 1.2em;
+    }
+    .carrousel{
+        position: absolute;
+    }
+    /* BOUTON ADMIN */
+    .btn-admin{
+        position: absolute;
+        left: 350px;
+        top: 30px;
+    }
+    .mobile-menu {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 577px){
+    header {
+        width: 100%;
+        max-height: 100px;
+        position: relative;
+    }
+
+     /* NAV */
+    .navbar{
+        padding: 0;
+    }
+    
+    
+    .navbar .logo {
+        padding: 30px 0 0 10px;
+    }
+
+    .navbar .logo img {
+        display: none;
+    }
+    .navbar .logo h1 {
+        padding-left: 15px;
+    }
+
+    .navbar .menu-hamburger {
+        display: block;
+        /* right: 20px; */
+    }
+
+    .logo-nav{
+        display: block;
+    }
+    .logo-nav a img {
+        /* position: absolute;
+        width: 30%;
+        top: 40px;
+        left: 150px; */
+        
+    }
+    
+    .nav-links {
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: pink;
+        /* backdrop-filter: blur(8px); */
+        width: 70%;
+        height: 110vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -100%;
+        transition: all 0.5s ease;
+
+    }
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: right; */
+    }
+    .navbar .nav-links ul li {
+        margin: 30px 0;
+    
+        font-size: 1.2em;
+    }
+    .carrousel{
+        position: absolute;
+        max-width: 100%;
+    }
+    /* BOUTON ADMIN */
+    .btn-admin{
+        position: absolute;
+        left: 200px;
+        top: 30px;
+    }
+    .mobile-menu {
+        margin-left: 0;
+    }
+    
+  
+
+}
+@media screen and (min-width: 768px) and (max-width: 991px){
+    header {
+        width: 100%;
+        max-height: 100px;
+        position: relative;
+    }
+
+     /* NAV */
+    .navbar{
+        padding: 0;
+    }
+    
+    
+    .navbar .logo {
+        padding: 30px 0 0 10px;
+    }
+
+    .navbar .logo img {
+        display: none;
+    }
+    .navbar .logo h1 {
+        padding-left: 15px;
+    }
+
+    .navbar .menu-hamburger {
+        display: block;
+        /* right: 20px; */
+    }
+
+    .logo-nav{
+        display: block;
+    }
+    .logo-nav a img {
+        position: absolute;
+        width: 30%;
+        top: 40px;
+        left: 150px;
+        
+    }
+    
+    .nav-links {
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: pink;
+        /* backdrop-filter: blur(20px); */
+
+        backdrop-filter: blur(8px);
+        width: 70%;
+        height: 110vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -100%;
+        transition: all 0.5s ease;
+
+    }
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: right; */
+    }
+    .navbar .nav-links ul li {
+        margin: 30px 0;
+    
+        font-size: 1.2em;
+    }
+    .carrousel{
+        position: absolute;
+        max-width: 100%;
+    }
+    /* BOUTON ADMIN */
+    .btn-admin{
+        position: absolute;
+        left: 250px;
+        top: 30px;
+    }
+    .mobile-menu {
+        margin-left: 0;
+    }
+
+}
+@media screen and (min-width: 992px){
+    header {
+        width: 100%;
+        max-height: 120px;
+        position: relative;
+    }
+
+     /* NAV */
+    .navbar{
+        padding: 0;
+    }
+    
+    
+    .navbar .logo {
+        padding: 30px 0 0 10px;
+    }
+
+    .navbar .logo img {
+        /* display: none; */
+        width: 70px;
+    }
+    .navbar .logo h1 {
+        padding-left: 15px;
+    }
+
+    .navbar .menu-hamburger {
+        /* display: block; */
+        /* right: 20px; */
+    }
+
+    .logo-nav{
+        /* display: block; */
+    }
+    .logo-nav a img {
+        /* position: absolute;
+        width: 30%;
+        top: 40px;
+        left: 150px; */
+        
+    }
+    
+    .nav-links {
+        
+
+    }
+    .nav-links ul {
+       
+        /* justify-content: right; */
+    }
+    .navbar .nav-links ul li {
+        
+    }
+    .carrousel{
+        position: absolute;
+        max-width: 100%;
+    }
+    /* BOUTON ADMIN */
+    .btn-admin{
+        /* position: absolute;
+        left: 250px;
+        top: 30px; */
+    }
+    .mobile-menu {
+        margin-left: 0;
+    }
+}
+

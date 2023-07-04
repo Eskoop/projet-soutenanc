@@ -74,7 +74,7 @@ if (!empty($_POST)) {
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.1/litera/bootstrap.min.css" integrity="sha512-VytuSEcywyOk3/TgzUvYclfS5MrwPLUhVZHMGpN4O81Cu/LguN+MxiFUZOkem4VkRVAPC8BVqaGziJ+xUz2BZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="asset/Css/style.css">
 
 
     <title>Tengoku - inscription</title>
@@ -119,7 +119,7 @@ if (!empty($_POST)) {
 
                     <div class="mb-3">
                         <label for="email">Courriel</label>
-                        <input type="text" name="email" id="email" class="form-control">
+                        <input type="text" name="email" id="email" class="form-control" required >
                     </div>
 
                     <div class="mb-3">
@@ -140,11 +140,13 @@ if (!empty($_POST)) {
     </main>
 
 
+    <!-- FOOTER -->
 
+    <?php require_once 'inc/footer.php' ?>
 
 
     <!-- Bootstrap JavaScript Libraries -->
-    <script src="Css/script.js"></script>
+    <script src="asset/js/script.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>

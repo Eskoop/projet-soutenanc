@@ -157,22 +157,7 @@
             <div class="navbar-collapse collapse sidebar-navbar-collapse">
                 <h4><a href="index.php">Tengoku-ADMIN</a></h4>
                 <ul class="nav navbar-nav" id="sidenav01">
-                    <!-- <li class="active">
-                        <a href="#" data-toggle="collapse" data-target="#toggleDemo0" data-parent="#sidenav01" class="collapsed">
-                            <h4>
-                                Control Panel
-                                <br>
-                                <small>IOSDSV <span class="caret"></span></small>
-                            </h4>
-                        </a>
-                        <div class="collapse" id="toggleDemo0" style="height: 0px;">
-                            <ul class="nav nav-list">
-                                <li><a href="#">ProfileSubMenu1</a></li>
-                                <li><a href="#">ProfileSubMenu2</a></li>
-                                <li><a href="#">ProfileSubMenu3</a></li>
-                            </ul>
-                        </div>
-                    </li> -->
+
                     <li>
                         <a href="#" data-toggle="collapse" data-target="#toggleDemo" data-parent="#sidenav01" class="collapsed">
                             <span class="glyphicon glyphicon-cloud"></span> Produit <span class="caret pull-right"></span>
@@ -181,7 +166,6 @@
                             <ul class="nav nav-list">
                                 <li><a href="index-produit.php">Tout les produit</a></li>
                                 <li><a href="ajout-produit.php">Ajout-produit.php</a></li>
-                                <li><a href="#">Submenu1.3</a></li>
                             </ul>
                         </div>
                     </li>
@@ -192,26 +176,16 @@
                         <div class="collapse" id="toggleDemo2" style="height: 0px;">
                             <ul class="nav nav-list">
                                 <li><a href="index-client.php">Tout les clients</a></li>
-                                <li><a href="#">Submenu2.2</a></li>
-                                <li><a href="#">Submenu2.3</a></li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <a href="#" data-toggle="collapse" data-target="#toggleDemo3" data-parent="#sidenav01" class="collapsed">
+                        <a href="index-article.php" data-toggle="collapse" data-target="#toggleDemo3" data-parent="#sidenav01" class="collapsed">
                             <span class="glyphicon glyphicon-lock"></span> Actu <span class="caret pull-right"></span>
                         </a>
-                        <div class="collapse" id="toggleDemo3" style="height: 0px;">
-                            <ul class="nav nav-list">
-                                <li><a href="index-article.php">Toutes les actus</a></li>
-                                <li><a href="#">Submenu2.2</a></li>
-                                <li><a href="#">Submenu2.3</a></li>
-                            </ul>
-                        </div>
+                        
                     </li>
                     <li><a href="../Home.php"><span class="glyphicon glyphicon-lock"></span> Retour sur le site</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> WithBadges <span class="badge pull-right">42</span></a></li>
-                    <li><a href=""><span class="glyphicon glyphicon-cog"></span> PreferencesMenu</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

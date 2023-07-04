@@ -1,5 +1,4 @@
 // console.log('connecté');
-
 let petitesImages = document.querySelectorAll('.miniImage');
 let grandeImage = document.querySelector('.grandImage');
 
